@@ -1,17 +1,18 @@
 const express = require("express");
-const Person = require("../modules/Post");
+
 const router = express.Router();
 
+const Post = require("../models/Post");
+
 router.get("/", (req, res) => {
-  res.send("We are on posts");
+  res.send("we are on posts");
 });
 
-router.post("/", (req, res) => {
-  const post = new Person({
-    name: "a",
-    // description: "a",
+router.get("/", (req, res) => {
+  const post = new Post({
+    name: req.body.name,
+    description: req.body.description,
   });
-
   post.save();
 });
 
